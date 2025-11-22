@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rialo Crypto Poker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Rialo Crypto Poker – a Rialo themed crypto chip poker game vs an AI bot, built for GitHub Pages by Vika Joestar"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-root">
+    <header class="app-header">
+      <div class="brand-left">
+        <img src="assets/rialo-logo.svg" alt="Rialo Logo" class="brand-logo" />
+        <div class="brand-text">
+          <h1>Rialo Crypto Poker</h1>
+          <p>Real world chips. Real time data. Off-chain fun.</p>
+        </div>
+      </div>
+      <div class="brand-right">
+        <span class="network-badge">Running on: Rialo simulation layer</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="sidebar">
+        <div class="panel panel-player-setup">
+          <h2>Configure Player</h2>
+          <label for="playerName">On-chain handle</label>
+          <input
+            id="playerName"
+            type="text"
+            placeholder="@vika.onrialo"
+            maxlength="20"
+          />
+          <label for="baseAsset">Primary chip asset</label>
+          <select id="baseAsset">
+            <option value="BTC">BTC</option>
+            <option value="ETH">ETH</option>
+          </select>
+          <button id="startGameBtn">Start Session</button>
+          <p class="hint">
+            No wallet, no bridge, no signup. Just a simulated table that feels like an app on Rialo.
+          </p>
+        </div>
+
+        <div class="panel panel-prices">
+          <h2>Crypto Price Pulse</h2>
+          <p class="small">
+            Live data from public APIs keeps your stack grounded in the real world.
+          </p>
+          <div class="price-row">
+            <span>BTC</span>
+            <span id="btcPrice">Loading...</span>
+          </div>
+          <div class="price-row">
+            <span>ETH</span>
+            <span id="ethPrice">Loading...</span>
+          </div>
+          <div class="price-row total-row">
+            <span>Your stack (est. USD)</span>
+            <span id="portfolioValue">0.00</span>
+          </div>
+          <p id="priceStatus" class="status-label"></p>
+        </div>
+
+        <div class="panel panel-credits">
+          <h2>Credits</h2>
+          <p>Builder: <a href="https://github.com/cilokcimol" target="_blank" rel="noopener noreferrer">@cilokcimol</a></p>
+          <p>Telegram: <a href="https://t.me/vikajoestar" target="_blank" rel="noopener noreferrer">@vikajoestar</a></p>
+          <p>Discord: <a href="https://discord.com/users/508636062340349962" target="_blank" rel="noopener noreferrer">@vikajoestar</a></p>
+          <p class="small">
+            Experimental Rialo themed game. Not real gambling, just a playground for builders and agents.
+          </p>
+        </div>
+      </section>
+
+      <section class="table-area">
+        <div class="table-top">
+          <div class="player-info bot-info">
+            <div class="info-header">
+              <span class="label">Bot</span>
+              <span id="botName" class="value">Waiting...</span>
+            </div>
+            <div class="chips">
+              <span class="chip-label">BTC chips</span>
+              <span id="botBTCChips" class="chip-value">0</span>
+            </div>
+            <div class="chips">
+              <span class="chip-label">ETH chips</span>
+              <span id="botETHChips" class="chip-value">0</span>
+            </div>
+          </div>
+
+          <div class="game-status">
+            <p id="gamePhase">Configure your player to begin.</p>
+            <p id="lastResult" class="last-result"></p>
+            <p id="handSummary" class="hand-summary"></p>
+          </div>
+
+          <div class="player-info hero-info">
+            <div class="info-header">
+              <span class="label">Player</span>
+              <span id="playerNameDisplay" class="value">@you</span>
+            </div>
+            <div class="chips">
+              <span class="chip-label">BTC chips</span>
+              <span id="playerBTCChips" class="chip-value">0</span>
+            </div>
+            <div class="chips">
+              <span class="chip-label">ETH chips</span>
+              <span id="playerETHChips" class="chip-value">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="hand-column">
+            <h3>Bot Hand</h3>
+            <div id="botHand" class="hand-cards">
+              <!-- Bot cards -->
+            </div>
+          </div>
+          <div class="hand-column">
+            <h3>Your Hand</h3>
+            <div id="playerHand" class="hand-cards">
+              <!-- Player cards -->
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-row">
+          <button id="dealHandBtn" disabled>Deal New Hand</button>
+          <button id="foldHandBtn" disabled>Fold Hand</button>
+          <span id="handsPlayed" class="hands-played">Hands played: 0</span>
+        </div>
+
+        <div class="log-panel">
+          <h3>Rialo Event Stream</h3>
+          <div id="logOutput" class="log-output"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Rialo Crypto Poker · Prototype layer for real world apps and agents</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
