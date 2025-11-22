@@ -1,4 +1,3 @@
-Rialo Crypto Poker
 Rialo Crypto Poker is a browser-based poker experience built for the Rialo ecosystem. It is a single player game where you play heads up against an AI bot. Chips are denominated in crypto assets such as BTC and ETH, and the UI leans on Rialo brand colors and narrative.
 
 Concept
